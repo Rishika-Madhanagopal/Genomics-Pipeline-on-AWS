@@ -2,7 +2,7 @@
 ### *End-to-end NGS workflow for scalable variant discovery and cloud-native analysis.*
 
 <div align="center">
-  <img src="docs/aws_architecture_diagram.png" width="100%" style="border-radius: 10px;" />
+  <img src="docs/AWS_Architecture_Diagram.png" width="100%" style="border-radius: 10px;" />
 </div>
 # 🧬 Bioinformatics Pipeline on AWS
 
