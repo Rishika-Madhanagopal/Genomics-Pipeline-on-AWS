@@ -4,6 +4,47 @@
 <div align="center">
   <img src="docs/AWS_Architecture_Diagram.png" width="100%" style="border-radius: 10px;" />
 </div>
+
+## 🛰️ OVERVIEW
+This repository implements a production-ready **Bioinformatics Pipeline** designed for the AWS ecosystem. It automates the transition from raw sequencing data (FASTQ) to validated variant calls (VCF), leveraging cloud elasticity for high-throughput genomic analysis.
+
+> **Key Objective:** To demonstrate a scalable, cloud-native approach to NGS data processing using industry-standard tools (GATK, BWA, FastQC) integrated with AWS core services.
+
+---
+
+## 🏗️ ARCHITECTURE & WORKFLOW
+The pipeline follows a modular design pattern to ensure scalability and cost-optimization:
+
+* **Compute:** Elastic execution on **Amazon EC2** (t3.medium+) with automation potential via **AWS Batch**.
+* **Storage:** Decoupled data architecture using **Amazon S3** for raw data lakes and result persistence.
+* **Orchestration:** Event-driven triggers using **AWS Lambda** for automated metadata extraction and process initiation.
+* **Analysis:** Interactive visualization and downstream statistics via **Jupyter Notebooks**.
+
+---
+
+## 🚀 FEATURES
+- ✅ **Quality Control:** Comprehensive read assessment using **FastQC**.
+- ✅ **Alignment:** High-sensitivity mapping via **Bowtie2** or **BWA**.
+- ✅ **Processing:** Efficient SAM/BAM manipulation with **Samtools**.
+- ✅ **Variant Discovery:** Gold-standard variant calling using **GATK**.
+- ✅ **Cloud Sync:** Automated results synchronization with **Amazon S3**.
+- ✅ **Insights:** Integrated Python-based analysis for VCF interpretation.
+
+---
+
+## 📁 PROJECT STRUCTURE
+```bash
+bioinformatics-pipeline-aws/
+├── data/                  # Sample genomic datasets (FASTQ/Reference)
+├── pipeline/
+│   ├── install_tools.sh   # Infrastructure setup & tool dependency management
+│   ├── run_pipeline.sh    # Main orchestration engine
+│   └── analysis/          # Intermediate processing (BAM/SAM/QC)
+├── scripts/
+│   ├── s3_upload.sh       # S3 Lifecycle & Data Transfer scripts
+│   └── jupyter_analysis.py# Downstream VCF parsing & visualization
+└── docs/                  # Architecture diagrams & Technical documentation
+```
 # 🧬 Bioinformatics Pipeline on AWS
 
 This project implements an end-to-end **bioinformatics workflow** for processing genomic data using **AWS Cloud Services**.  
