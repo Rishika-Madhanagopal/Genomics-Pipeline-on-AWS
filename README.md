@@ -42,7 +42,7 @@ bioinformatics-pipeline-aws/
 │   └── analysis/          # Intermediate processing (BAM/SAM/QC)
 ├── scripts/
 │   ├── s3_upload.sh       # S3 Lifecycle & Data Transfer scripts
-│   └── jupyter_analysis.py# Downstream VCF parsing & visualization
+│   └── jupyter_analysis.py # Downstream VCF parsing & visualization
 └── docs/                  # Architecture diagrams & Technical documentation
 ```
 # 🧬 Bioinformatics Pipeline on AWS
