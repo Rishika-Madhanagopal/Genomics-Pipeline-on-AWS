@@ -1,4 +1,9 @@
+# 🧬 Genomics Pipeline on AWS
+### *End-to-end NGS workflow for scalable variant discovery and cloud-native analysis.*
 
+<div align="center">
+  <img src="docs/aws_architecture_diagram.png" width="100%" style="border-radius: 10px;" />
+</div>
 # 🧬 Bioinformatics Pipeline on AWS
 
 This project implements an end-to-end **bioinformatics workflow** for processing genomic data using **AWS Cloud Services**.  
