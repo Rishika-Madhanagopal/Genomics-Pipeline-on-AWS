@@ -10,7 +10,6 @@ This repository implements a production-ready **Bioinformatics Pipeline** design
 
 > **Key Objective:** To demonstrate a scalable, cloud-native approach to NGS data processing using industry-standard tools (GATK, BWA, FastQC) integrated with AWS core services.
 
----
 
 ## 🏗️ ARCHITECTURE & WORKFLOW
 The pipeline follows a modular design pattern to ensure scalability and cost-optimization:
@@ -20,7 +19,6 @@ The pipeline follows a modular design pattern to ensure scalability and cost-opt
 * **Orchestration:** Event-driven triggers using **AWS Lambda** for automated metadata extraction and process initiation.
 * **Analysis:** Interactive visualization and downstream statistics via **Jupyter Notebooks**.
 
----
 
 ## 🚀 FEATURES
 - ✅ **Quality Control:** Comprehensive read assessment using **FastQC**.
@@ -30,173 +28,103 @@ The pipeline follows a modular design pattern to ensure scalability and cost-opt
 - ✅ **Cloud Sync:** Automated results synchronization with **Amazon S3**.
 - ✅ **Insights:** Integrated Python-based analysis for VCF interpretation.
 
----
 
 ## 📁 PROJECT STRUCTURE
 ```bash
 bioinformatics-pipeline-aws/
-├── data/                  # Sample genomic datasets (FASTQ/Reference)
+├── data/                   # Sample genomic datasets (FASTQ/Reference)
 ├── pipeline/
-│   ├── install_tools.sh   # Infrastructure setup & tool dependency management
-│   ├── run_pipeline.sh    # Main orchestration engine
-│   └── analysis/          # Intermediate processing (BAM/SAM/QC)
+│   ├── install_tools.sh    # Infrastructure setup & tool dependency management
+│   ├── run_pipeline.sh     # Main orchestration engine
+│   └── analysis/           # Intermediate processing (BAM/SAM/QC)
 ├── scripts/
-│   ├── s3_upload.sh       # S3 Lifecycle & Data Transfer scripts
+│   ├── s3_upload.sh        # S3 Lifecycle & Data Transfer scripts
 │   └── jupyter_analysis.py # Downstream VCF parsing & visualization
-└── docs/                  # Architecture diagrams & Technical documentation
+└── docs/                   # Architecture diagrams & Technical documentation
 ```
-# 🧬 Bioinformatics Pipeline on AWS
+## ⚙️ DEPLOYMENT GUIDE
 
-This project implements an end-to-end **bioinformatics workflow** for processing genomic data using **AWS Cloud Services**.  
-It takes raw sequencing data (FASTQ), performs:
-
-- 🧪 Quality control (FastQC)  
-- 🎯 Read alignment (Bowtie2 or BWA)  
-- 🧬 Variant calling (GATK)  
-- 📊 Data analysis (Jupyter Notebook)
-
-It runs on **EC2**, stores data in **Amazon S3**, and optionally automates/parallelizes tasks via **AWS Lambda** and **AWS Batch**.
-
----
-
-## 📁 Project Structure
-
-```
-bioinformatics-pipeline-aws/
-│
-├── data/                      # Sample genomic data
-│
-├── pipeline/
-│   ├── install_tools.sh       # Script to install bioinformatics tools
-│   ├── run_pipeline.sh        # Main shell script to run the pipeline
-│   └── analysis/
-│       ├── fastqc_reports/
-│       ├── sam_files/
-│       └── bam_files/
-│
-├── docs/
-│   └── aws_architecture_diagram.png  # AWS architecture diagram
-│
-├── scripts/
-│   ├── s3_upload.sh           # Upload results to S3
-│   └── jupyter_analysis.py    # Analysis notebook for results
-│
-└── README.md
-```
-
----
-
-## 🚀 Features
-
-- ✅ Quality checks using **FastQC**  
-- ✅ Read alignment using **Bowtie2** or **BWA**  
-- ✅ Alignment file processing with **Samtools**  
-- ✅ Variant calling using **GATK**  
-- ✅ Uploading data/results to **Amazon S3**  
-- ✅ Visualization & analysis in **Jupyter Notebook**  
-- ✅ Cloud-native design using **EC2**, **S3**, **Lambda**, and **AWS Batch**
-
----
-
-## 🔧 Prerequisites
-
-- AWS account with access to EC2, S3, Lambda, and Batch  
-- An EC2 instance (Ubuntu preferred, `t2.medium` or higher)  
-- SSH access (e.g., PuTTY or native SSH on Windows)  
-- Tools installed using `install_tools.sh`  
-
----
-
-## ⚙️ Setup Guide
-
-### 1️⃣ Clone the Repository
-
+### 1️⃣ Environment Initialization
 ```bash
-git clone https://github.com/yourusername/bioinformatics-pipeline-aws.git
+git clone [https://github.com/Rishika-Madhanagopal/Bioinformatics_Pipeline_AWS.git](https://github.com/Rishika-Madhanagopal/Bioinformatics_Pipeline_AWS.git)
+cd bioinformatics-pipeline-aws
+```
+### 2️⃣ Cloud Infrastructure Setup
+Launch an Ubuntu-based EC2 instance and provision the environment:
+```bash
+cd pipeline
+bash install_tools.sh
+```
+### 3️⃣ Execution & Data Lifecycle
+Execute the core pipeline. The script automates QC, Alignment, and Variant Calling:
+```bash
+bash run_pipeline.sh
+```
+Sync validated results to your Amazon S3 Bucket:
+```bash
+bash ../scripts/s3_upload.sh
+```
+
+## 📊 DATA ANALYSIS
+Post-pipeline analysis is handled via Jupyter, allowing for interactive exploration of variant distributions:
+```bash
+pip3 install jupyter pandas matplotlib
+jupyter notebook scripts/jupyter_analysis.py
+```
+
+## 🛠️ PREREQUISITES
+
+- **AWS Account:** Active access to EC2, S3, Lambda, and Batch.  
+- **CLI:** AWS CLI configured with appropriate IAM permissions.  
+- **Compute:** Minimum t2.medium instance (t3.large recommended for BWA alignment).
+
+## 🙌 Acknowledgements
+
+- This version uses clean Markdown formatting with specific language identifiers to ensure the code blocks look crisp and professional on GitHub.
+
+```markdown
+---
+
+## ⚙️ DEPLOYMENT GUIDE
+
+### 1️⃣ Environment Initialization
+```bash
+git clone [https://github.com/Rishika-Madhanagopal/Bioinformatics_Pipeline_AWS.git](https://github.com/Rishika-Madhanagopal/Bioinformatics_Pipeline_AWS.git)
 cd bioinformatics-pipeline-aws
 ```
 
----
-
-### 2️⃣ Upload Genomic Data to S3
-
-Use the AWS CLI to upload your input files to S3:
-
-```bash
-aws s3 cp ~/Downloads/raw_data/ s3://your-bucket-name/raw_data/ --recursive
-```
-
----
-
-### 3️⃣ Launch EC2 Instance
-
-Use **Ubuntu** as the base AMI.  
-Connect via SSH:
-
-- Windows users: Use **PuTTY**
-- Linux/macOS/WSL users: Use the native `ssh` command
-
----
-
-### 4️⃣ Install Tools on EC2
-
+### 2️⃣ Cloud Infrastructure Setup
+Launch an **Ubuntu-based EC2 instance** and provision the environment:
 ```bash
 cd pipeline
 bash install_tools.sh
 ```
 
----
-
-### 5️⃣ Run the Bioinformatics Pipeline
-
+### 3️⃣ Execution & Data Lifecycle
+Execute the core pipeline. The script automates **QC, Alignment, and Variant Calling**:
 ```bash
 bash run_pipeline.sh
 ```
 
-This script will:
-
-- Run FastQC for quality control  
-- Align reads to reference genome  
-- Convert SAM to BAM  
-- Call variants using GATK  
-
----
-
-### 6️⃣ Upload Results to S3
-
+Sync validated results to your **Amazon S3 Bucket**:
 ```bash
-cd ../scripts
-bash s3_upload.sh
+bash ../scripts/s3_upload.sh
 ```
 
----
-
-## 📊 Analyze Results in Jupyter
-
-1. Launch Jupyter on your EC2 instance (or locally):
+## 📊 DATA ANALYSIS
+Post-pipeline analysis is handled via **Jupyter**, allowing for interactive exploration of variant distributions:
 
 ```bash
 pip3 install jupyter pandas matplotlib
-jupyter notebook
+jupyter notebook scripts/jupyter_analysis.py
 ```
 
-2. Open `jupyter_analysis.py`  
-3. Run each cell to load and visualize the `.vcf` results.
+## 🛠️ PREREQUISITES
+* **AWS Account:** Active access to EC2, S3, Lambda, and Batch.
+* **CLI:** AWS CLI configured with appropriate IAM permissions.
+* **Compute:** Minimum `t2.medium` instance (`t3.large` recommended for BWA alignment).
 
----
-
-## ☁️ AWS Architecture
-
-Below is the architecture diagram showing how the pipeline components interact across AWS services:
-
-![AWS Architecture Diagram](docs/AWS_Architecture_Diagram.png)
-
-
----
-
-## 🙌 Acknowledgements
-
-- [NCBI SRA](https://www.ncbi.nlm.nih.gov/sra)  
-- [1000 Genomes Project](https://www.internationalgenome.org/)  
-- [GATK Toolkit](https://gatk.broadinstitute.org/)  
-- [Amazon Web Services](https://aws.amazon.com/free) – AWS Free Tier  
+## 🙌 ACKNOWLEDGEMENTS
+- **Data Sources:** NCBI SRA & 1000 Genomes Project.
+- **Toolkits:** Broad Institute GATK & Wellcome Trust Sanger Institute.
+- **Infrastructure:** Amazon Web Services (AWS) Cloud Credits.
