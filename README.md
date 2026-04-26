@@ -82,3 +82,6 @@ jupyter notebook scripts/jupyter_analysis.py
 - **Data Sources:** NCBI SRA & 1000 Genomes Project.
 - **Toolkits:** Broad Institute GATK & Wellcome Trust Sanger Institute.
 - **Infrastructure:** Amazon Web Services (AWS) Cloud Credits.
+
+### 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
