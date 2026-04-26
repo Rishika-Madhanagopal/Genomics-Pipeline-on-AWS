@@ -46,8 +46,8 @@ bioinformatics-pipeline-aws/
 
 ### 1️⃣ Environment Initialization
 ```bash
-git clone [https://github.com/Rishika-Madhanagopal/Bioinformatics_Pipeline_AWS.git](https://github.com/Rishika-Madhanagopal/Bioinformatics_Pipeline_AWS.git)
-cd bioinformatics-pipeline-aws
+git clone https://github.com/Rishika-Madhanagopal/Genomics-Pipeline-on-AWS.git
+cd Genomics-Pipeline-on-AWS
 ```
 ### 2️⃣ Cloud Infrastructure Setup
 Launch an Ubuntu-based EC2 instance and provision the environment:
